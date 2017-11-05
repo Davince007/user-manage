@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nwpu.um.dao.AddressDao">
+	
 	<resultMap id="BaseResultMap" type="com.nwpu.um.bean.AddressBean">
 		<id column="addr_Id" property="addrId" jdbcType="BIGINT" />
 		<result column="addr_uiid" property="uiid" jdbcType="VARCHAR" />
@@ -19,6 +20,7 @@
 		<result column="addr_createTime" property="createTime" jdbcType="TIMESTAMP" />
 		<result column="addr_updateTime" property="updateTime" jdbcType="TIMESTAMP" />
 	</resultMap>
+	
 	<sql id="column_field">
 		<!--数据库命名规范应为下划线命名方式，如t_uiid 数据库字段 as JavaBean字段 -->
 		addr_Id as 'addrId',
@@ -37,6 +39,7 @@
 		addr_createTime as 'createTime',
 		addr_updateTime as 'updateTime'
 	</sql>
+	
 	<select id="queryAddress" parameterType="java.lang.String"
 		resultType="com.nwpu.um.bean.AddressBean">
 		select
@@ -48,4 +51,152 @@
 		</if>
 		order by addr_createTime desc
 	</select>
+
+	<insert id="addAddress" parameterType="com.nwpu.um.bean.AddressBean"
+		useGeneratedKeys="true" keyProperty="addr_Id">
+		insert into um_address
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="uiid !=null ">
+				addr_uiid,
+			</if>
+			<if test="idNumber != null ">
+				addr_idNumber,
+			</if>
+			<if test="idType != null ">
+				addr_idType,
+			</if>
+			<if test="phone != null ">
+				addr_phone,
+			</if>
+			<if test="consignee != null ">
+				addr_consignee,
+			</if>
+			<if test="province != null ">
+				addr_province,
+			</if>
+			<if test="city != null">
+				addr_city,
+			</if>
+			<if test="county != null">
+				addr_county,
+			</if>
+			<if test="town != null ">
+				addr_town,
+			</if>
+			<if test="detailAddr != null ">
+				addr_detailAddr,
+			</if>
+			<if test="email != null ">
+				addr_email,
+			</if>
+			<if test="isDefaultAddr != null ">
+				addr_isDefaultAddr,
+			</if>
+			<if test="createTime != null ">
+				addr_createTime,
+			</if>
+			<if test="updateTime != null ">
+				addr_updateTime
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="uiid != null">
+				#{uiid,jdbcType=VARCHAR},
+			</if>
+			<if test="idNumber != null">
+				#{idNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="idType != null">
+				#{idType,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="consignee != null">
+				#{consignee,jdbcType=VARCHAR},
+			</if>
+			<if test="province != null">
+				#{province,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				#{city,jdbcType=VARCHAR},
+			</if>
+			<if test="county != null">
+				#{county,jdbcType=VARCHAR},
+			</if>
+			<if test="town != null">
+				#{town,jdbcType=VARCHAR},
+			</if>
+			<if test="detailAddr != null">
+				#{detailAddr,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="isDefaultAddr != null">
+				#{isDefaultAddr,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP}
+			</if>
+		</trim>
+	</insert>
+
+	<delete id="delAddress" parameterType="java.lang.String">
+		delete
+		from um_address
+		where addr_uiid = #{uiid,jdbcType=VARCHAR}
+	</delete>
+
+	<update id="updateAddress" parameterType="com.nwpu.um.bean.AddressBean">
+		update um_address
+		<set>
+			<if test="uiid != null">
+				addr_uiid=#{uiid,jdbcType=VARCHAR},
+			</if>
+			<if test="idNumber != null">
+				addr_idNumber=#{idNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="idType != null">
+				addr_idType=#{idType,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				addr_phone=#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="consignee != null">
+				addr_consignee=#{consignee,jdbcType=VARCHAR},
+			</if>
+			<if test="province != null">
+				addr_province=#{province,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				addr_city=#{city,jdbcType=VARCHAR},
+			</if>
+			<if test="county != null">
+				addr_county=#{county,jdbcType=VARCHAR},
+			</if>
+			<if test="town != null">
+				addr_town=#{town,jdbcType=VARCHAR},
+			</if>
+			<if test="detailAddr != null">
+				addr_detailAddr=#{detailAddr,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				addr_email=#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="isDefaultAddr != null ">
+				addr_isDefaultAddr=#{isDefaultAddr,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				addr_createTime=#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				addr_updateTime=#{updateTime,jdbcType=TIMESTAMP}
+			</if>
+		</set>
+		where addr_Id =#{addrId}
+	</update>
 </mapper>

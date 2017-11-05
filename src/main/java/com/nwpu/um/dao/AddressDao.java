@@ -21,11 +21,10 @@ public interface AddressDao {
 	
 	/**
 	 * 删除收货地址
-	 * @param addressId
 	 * @param uiid
 	 * @return
 	 */
-	public int delAddress(@Param("addressId")String addressId,@Param("uiid")String uiid);
+	public int delAddress(@Param("uiid")String uiid);
 	
 	/**
 	 * 查询收货地址
@@ -39,5 +38,5 @@ public interface AddressDao {
 	 * @param addressBean
 	 * @return
 	 */
-	public AddressBean updateAddress(AddressBean addressBean);
+	public int updateAddress(AddressBean addressBean);
 }
