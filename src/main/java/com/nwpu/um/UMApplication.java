@@ -1,12 +1,12 @@
-package com.nwpu.um.usermanage;
+package com.nwpu.um;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UserManageApplication {
+public class UMApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UserManageApplication.class, args);
+		SpringApplication.run(UMApplication.class, args);
 	}
 }
