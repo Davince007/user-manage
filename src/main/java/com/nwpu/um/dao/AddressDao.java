@@ -1,5 +1,6 @@
 package com.nwpu.um.dao;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.nwpu.um.bean.AddressBean;
@@ -9,6 +10,7 @@ import com.nwpu.um.bean.AddressBean;
  * @author GWD
  *
  */
+@Mapper
 public interface AddressDao {
 	/**
 	 * 添加收货地址

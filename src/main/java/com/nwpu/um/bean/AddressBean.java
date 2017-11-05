@@ -9,6 +9,8 @@ package com.nwpu.um.bean;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import org.hibernate.validator.constraints.Email;
+
 public class AddressBean implements Serializable{
 	/**
 	 * 序列化版本ID
@@ -17,7 +19,7 @@ public class AddressBean implements Serializable{
 	/**
 	 * 主键
 	 */
-	private String addressId;
+	private long addrId;
 	/**
 	 * 用户信息表主键
 	 */
@@ -61,6 +63,7 @@ public class AddressBean implements Serializable{
 	/**
 	 * 收件人邮箱
 	 */
+	@Email(message="请输入正确的邮箱")
 	private String email;
 	/**
 	 * 是否为默认地址
@@ -75,12 +78,12 @@ public class AddressBean implements Serializable{
 	 */
 	private Timestamp updateTime;
 
-	public String getAddressId() {
-		return addressId;
+	public long getAddrId() {
+		return addrId;
 	}
 
-	public void setAddressId(String addressId) {
-		this.addressId = addressId;
+	public void setAddrId(long addrId) {
+		this.addrId = addrId;
 	}
 
 	public String getUiid() {
@@ -197,7 +200,7 @@ public class AddressBean implements Serializable{
 
 	@Override
 	public String toString() {
-		return "AddressBean [addressId=" + addressId + ", uiid=" + uiid + ", idNumber=" + idNumber + ", idType="
+		return "AddressBean [addrId=" + addrId + ", uiid=" + uiid + ", idNumber=" + idNumber + ", idType="
 				+ idType + ", phone=" + phone + ", consignee=" + consignee + ", province=" + province + ", city=" + city
 				+ ", county=" + county + ", town=" + town + ", detailAddr=" + detailAddr + ", email=" + email
 				+ ", isDefaultAddr=" + isDefaultAddr + ", createTime=" + createTime + ", updateTime=" + updateTime
