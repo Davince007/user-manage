@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nwpu.um.dao.AddressDao">
 	
-	<resultMap id="BaseResultMap" type="com.nwpu.um.bean.AddressBean">
+	<resultMap id="BaseResultMap" type="com.nwpu.um.model.AddressModel">
 		<id column="addr_Id" property="addrId" jdbcType="BIGINT" />
 		<result column="addr_uiid" property="uiid" jdbcType="VARCHAR" />
 		<result column="addr_idNumber" property="idNumber" jdbcType="VARCHAR" />
@@ -41,7 +41,7 @@
 	</sql>
 	
 	<select id="queryAddress" parameterType="java.lang.String"
-		resultType="com.nwpu.um.bean.AddressBean">
+		resultType="com.nwpu.um.model.AddressModel">
 		select
 		<include refid="column_field" />
 		from um_address
@@ -52,7 +52,7 @@
 		order by addr_createTime desc
 	</select>
 
-	<insert id="addAddress" parameterType="com.nwpu.um.bean.AddressBean"
+	<insert id="addAddress" parameterType="com.nwpu.um.model.AddressModel"
 		useGeneratedKeys="true" keyProperty="addr_Id">
 		insert into um_address
 		<trim prefix="(" suffix=")" suffixOverrides=",">
@@ -151,7 +151,7 @@
 		where addr_uiid = #{uiid,jdbcType=VARCHAR}
 	</delete>
 
-	<update id="updateAddress" parameterType="com.nwpu.um.bean.AddressBean">
+	<update id="updateAddress" parameterType="com.nwpu.um.model.AddressModel">
 		update um_address
 		<set>
 			<if test="uiid != null">

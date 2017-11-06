@@ -3,10 +3,11 @@ package com.nwpu.um.dao;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.nwpu.um.bean.AddressBean;
+import com.nwpu.um.model.AddressModel;
 
 /**
  * 收货地址Dao接口
+ * 
  * @author GWD
  *
  */
@@ -17,7 +18,7 @@ public interface AddressDao {
 	 * @param addressBean
 	 * @return
 	 */
-	public int addAddress(AddressBean addressBean);
+	public int addAddress(AddressModel addressBean);
 	
 	/**
 	 * 删除收货地址
@@ -31,12 +32,12 @@ public interface AddressDao {
 	 * @param uiid
 	 * @return
 	 */
-	public AddressBean queryAddress(@Param("uiid")String uiid);
+	public AddressModel queryAddress(@Param("uiid")String uiid);
 	
 	/**
 	 * 修改收货地址
 	 * @param addressBean
 	 * @return
 	 */
-	public int updateAddress(AddressBean addressBean);
+	public int updateAddress(AddressModel addressBean);
 }
