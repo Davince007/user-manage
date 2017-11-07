@@ -1,14 +1,15 @@
-package com.nwpu.um.vo;
+package com.nwpu.um.bean;
 
 import java.io.Serializable;
 
-public class HTTPResult<T> implements Serializable {
+public class ResultBean <T> implements Serializable{
 
-	private static final long serialVersionUID = 5351999350362013231L;
-
+	private static final long serialVersionUID = 9027468563707925143L;
+	
 	public static final String SUCCESS_CODE = "000000";
 	public static final String FAILURE_CODE = "999999";
 	public static final String APP_ERROR = "111111";
+	public static final String SUCCESS_DESC = "SUCCESS";
 
 	/** 返回码 */
 	private String resultCode;
@@ -17,14 +18,20 @@ public class HTTPResult<T> implements Serializable {
 	/** 返回数据 */
 	private T data;
 
-	public HTTPResult(String resultCode, T data) {
+	public ResultBean(String resultCode, T data) {
 		this.resultCode = resultCode;
 		this.data = data;
 	}
 
-	public HTTPResult(String resultCode, String resultDesc) {
+	public ResultBean(String resultCode, String resultDesc) {
 		this.resultCode = resultCode;
 		this.resultDesc = resultDesc;
+	}
+	
+	public ResultBean(String resultCode, String resultDesc, T data) {
+		this.resultCode = resultCode;
+		this.resultDesc = resultDesc;
+		this.data = data;
 	}
 
 	public String getResultCode() {
@@ -50,5 +57,4 @@ public class HTTPResult<T> implements Serializable {
 	public void setData(T data) {
 		this.data = data;
 	}
-
 }

@@ -1,4 +1,4 @@
-package com.nwpu.um.model;
+package com.nwpu.um.bean;
 /**
  * 用户收货地址信息
  * 
@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 
 import org.hibernate.validator.constraints.Email;
 
-public class AddressModel implements Serializable{
+public class AddressBean implements Serializable{
 	/**
 	 * 序列化版本ID
 	 */

@@ -4,8 +4,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.nwpu.um.UMApplicationTests;
+import com.nwpu.um.bean.AddressBean;
 import com.nwpu.um.dao.AddressDao;
-import com.nwpu.um.model.AddressModel;
 
 import junit.framework.Assert;
 
@@ -17,7 +17,7 @@ public class AddressDaoTest extends UMApplicationTests{
 	
 	@Test
 	public void testQueryAddress() {
-		AddressModel addressBean = new AddressModel();
+		AddressBean addressBean = new AddressBean();
 		String uiid = "123";
 		addressBean = addressDao.queryAddress(uiid);
 		 Assert.assertEquals("13100001111", addressBean.getPhone());
@@ -32,7 +32,7 @@ public class AddressDaoTest extends UMApplicationTests{
 	
 	@Test
 	public void testAddAddress() {
-		AddressModel addressBean = new AddressModel();
+		AddressBean addressBean = new AddressBean();
 		addressBean.setUiid("1234");
 		addressBean.setIdNumber("420101199001018888");
 		addressBean.setIdType("1");
@@ -51,7 +51,7 @@ public class AddressDaoTest extends UMApplicationTests{
 	
 	@Test
 	public void testUpdateAddress() {
-		AddressModel addressBean = addressDao.queryAddress("1234");
+		AddressBean addressBean = addressDao.queryAddress("1234");
 		addressBean.setEmail("987654321@qq,com");
 		addressBean.setIsDefaultAddr("N");
 		int num = addressDao.updateAddress(addressBean);

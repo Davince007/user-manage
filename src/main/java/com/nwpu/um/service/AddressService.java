@@ -1,6 +1,7 @@
 package com.nwpu.um.service;
 
-import com.nwpu.um.model.AddressModel;
+import com.nwpu.um.bean.AddressBean;
+
 /**
  * 收货地址管理接口
  * 
@@ -14,7 +15,7 @@ public interface AddressService {
 	 * @param addressBean
 	 * @return
 	 */
-	public int addAddress(AddressModel addressBean);
+	public int addAddress(AddressBean addressBean);
 	
 	/**
 	 * 删除收货地址
@@ -28,12 +29,12 @@ public interface AddressService {
 	 * @param uiid
 	 * @return
 	 */
-	public AddressModel queryAddress(String uiid);
+	public AddressBean queryAddress(String uiid);
 	
 	/**
 	 * 修改收货地址
 	 * @param addressBean
 	 * @return
 	 */
-	public int updateAddress(AddressModel addressBean);
+	public int updateAddress(AddressBean addressBean);
 }

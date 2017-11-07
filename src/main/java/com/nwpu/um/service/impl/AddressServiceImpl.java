@@ -3,8 +3,8 @@ package com.nwpu.um.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nwpu.um.bean.AddressBean;
 import com.nwpu.um.dao.AddressDao;
-import com.nwpu.um.model.AddressModel;
 import com.nwpu.um.service.AddressService;
 
 @Service("addressService")
@@ -14,7 +14,7 @@ public class AddressServiceImpl implements AddressService {
 	private AddressDao addressDao;
 
 	@Override
-	public int addAddress(AddressModel addressBean) {
+	public int addAddress(AddressBean addressBean) {
 		return addressDao.addAddress(addressBean);
 	}
 
@@ -24,12 +24,12 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
-	public AddressModel queryAddress(String uiid) {
+	public AddressBean queryAddress(String uiid) {
 		return addressDao.queryAddress(uiid);
 	}
 
 	@Override
-	public int updateAddress(AddressModel addressBean) {
+	public int updateAddress(AddressBean addressBean) {
 		return addressDao.updateAddress(addressBean);
 	}
 }
