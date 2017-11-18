@@ -1,16 +1,20 @@
-package com.nwpu.um.service;
+package com.nwpu.um.mapper;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.nwpu.um.model.AddressModel;
 import com.nwpu.um.vo.AddressInfo;
 
+
 /**
- * 收货地址管理接口
+ * 收货地址Dao接口
  * 
  * @author GWD
  *
  */
-public interface AddressService {
-
+@Mapper
+public interface AddressMapper {
 	/**
 	 * 添加收货地址
 	 * @param addressBean
@@ -34,7 +38,7 @@ public interface AddressService {
 	
 	/**
 	 * 修改收货地址
-	 * @param info
+	 * @param addressBean
 	 * @return
 	 */
 	public int updateAddress(AddressInfo info);

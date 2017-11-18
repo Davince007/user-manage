@@ -4,15 +4,15 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nwpu.um.bean.AddressBean;
-import com.nwpu.um.bean.ResultBean;
+import com.nwpu.um.model.AddressModel;
 import com.nwpu.um.service.AddressService;
+import com.nwpu.um.vo.AddressInfo;
+import com.nwpu.um.vo.ResultBean;
 
 /**
  * 收货地址api
@@ -36,16 +36,16 @@ public class AddressController {
 	 * @return
 	 */
 	@RequestMapping(value = "queryAddress", method = RequestMethod.GET)
-	public ResultBean<AddressBean> queryAddress(AddressBean addressBean) {
+	public ResultBean<AddressModel> queryAddress(AddressInfo info) {
 
-		String uiid = addressBean.getUiid();
+		String uiid = info.getUiid();
 		if (StringUtils.isBlank(uiid)) {
-			return new ResultBean<AddressBean>(ResultBean.FAILURE_CODE, "uiid不能为空");
+			return new ResultBean<AddressModel>(ResultBean.FAILURE_CODE, "uiid不能为空");
 		}
 
-		addressBean = addressService.queryAddress(addressBean.getUiid());
-		LOG.info("The addressBean is:{}", addressBean);
-		return new ResultBean<AddressBean>(ResultBean.SUCCESS_CODE, ResultBean.SUCCESS_DESC, addressBean);
+		AddressModel addressModel = addressService.queryAddress(info);
+		LOG.info("The addressBean is:{}", info);
+		return new ResultBean<AddressModel>(ResultBean.SUCCESS_CODE, ResultBean.SUCCESS_DESC, addressModel);
 	}
 
 	/**
@@ -55,14 +55,14 @@ public class AddressController {
 	 * @return
 	 */
 	@RequestMapping(value = "addAddress", method = RequestMethod.POST)
-	public ResultBean<AddressBean> addAddress(@RequestBody AddressBean addressBean) {
+	public ResultBean<AddressModel> addAddress(@RequestBody AddressInfo info) {
 
-		int num = addressService.addAddress(addressBean);
+		int num = addressService.saveAddress(info);
 		LOG.info("The num is:{}",num);
 		if (num != 1) {
-			return new ResultBean<AddressBean>(ResultBean.FAILURE_CODE, "添加收货地址失败");
+			return new ResultBean<AddressModel>(ResultBean.FAILURE_CODE, "添加收货地址失败");
 		}
-		return new ResultBean<AddressBean>(ResultBean.SUCCESS_CODE, ResultBean.SUCCESS_DESC);
+		return new ResultBean<AddressModel>(ResultBean.SUCCESS_CODE, ResultBean.SUCCESS_DESC);
 	}
 
 }
