@@ -12,8 +12,15 @@ import junit.framework.Assert;
 @SuppressWarnings("deprecation")
 public class AddressDaoTest extends UMApplicationTests{
 	
+	@Autowired
+	private AddressMapper addressMapper;
+	
 	@Test
 	public void testQueryAddress() {
+		
+		String uiid = "123456";
+		AddressModel addressModel = addressMapper.queryAddress(uiid);
+		Assert.assertEquals(addressModel.getIdNumber(), "420101199001011234");
 	}
 	
 	@Test

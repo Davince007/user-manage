@@ -20,13 +20,13 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
-	public int delAddress(AddressInfo info) {
-		return addressDao.delAddress(info);
+	public int delAddress(String uiid) {
+		return addressDao.delAddress(uiid);
 	}
 
 	@Override
-	public AddressModel queryAddress(AddressInfo info) {
-		return addressDao.queryAddress(info);
+	public AddressModel queryAddress(String uiid) {
+		return addressDao.queryAddress(uiid);
 	}
 
 	@Override

@@ -1,17 +1,14 @@
 package com.nwpu.um.model;
+
+import java.io.Serializable;
+
 /**
  * 用户收货地址信息
  * 
  * @author GWD
  *
  */
-
-import java.io.Serializable;
-import java.sql.Timestamp;
-
-import org.hibernate.validator.constraints.Email;
-
-public class AddressModel implements Serializable{
+public class AddressModel implements Serializable {
 	/**
 	 * 序列化版本ID
 	 */
@@ -63,20 +60,41 @@ public class AddressModel implements Serializable{
 	/**
 	 * 收件人邮箱
 	 */
-	@Email(message="请输入正确的邮箱")
 	private String email;
 	/**
 	 * 是否为默认地址
 	 */
 	private String isDefaultAddr;
+
+	/**
+	 * 创建人
+	 */
+	private String createUser;
+
+	/**
+	 * 创建日期
+	 */
+	private String createDate;
+
 	/**
 	 * 创建时间
 	 */
-	private Timestamp createTime;
+	private String createTime;
+
 	/**
-	 * 更新时间
+	 * 修改人
 	 */
-	private Timestamp updateTime;
+	private String updateUser;
+
+	/**
+	 * 修改日期
+	 */
+	private String updateDate;
+
+	/**
+	 * 修改时间
+	 */
+	private String updateTime;
 
 	public long getAddrId() {
 		return addrId;
@@ -182,29 +200,62 @@ public class AddressModel implements Serializable{
 		this.isDefaultAddr = isDefaultAddr;
 	}
 
-	public Timestamp getCreateTime() {
+	public String getCreateUser() {
+		return createUser;
+	}
+
+	public void setCreateUser(String createUser) {
+		this.createUser = createUser;
+	}
+
+	public String getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+
+	public String getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(Timestamp createTime) {
+	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
 
-	public Timestamp getUpdateTime() {
+	public String getUpdateUser() {
+		return updateUser;
+	}
+
+	public void setUpdateUser(String updateUser) {
+		this.updateUser = updateUser;
+	}
+
+	public String getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(String updateDate) {
+		this.updateDate = updateDate;
+	}
+
+	public String getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdateTime(Timestamp updateTime) {
+	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
 	}
 
 	@Override
 	public String toString() {
-		return "AddressBean [addrId=" + addrId + ", uiid=" + uiid + ", idNumber=" + idNumber + ", idType="
-				+ idType + ", phone=" + phone + ", consignee=" + consignee + ", province=" + province + ", city=" + city
+		return "AddressModel [addrId=" + addrId + ", uiid=" + uiid + ", idNumber=" + idNumber + ", idType=" + idType
+				+ ", phone=" + phone + ", consignee=" + consignee + ", province=" + province + ", city=" + city
 				+ ", county=" + county + ", town=" + town + ", detailAddr=" + detailAddr + ", email=" + email
-				+ ", isDefaultAddr=" + isDefaultAddr + ", createTime=" + createTime + ", updateTime=" + updateTime
-				+ "]";
+				+ ", isDefaultAddr=" + isDefaultAddr + ", createUser=" + createUser + ", createDate=" + createDate
+				+ ", createTime=" + createTime + ", updateUser=" + updateUser + ", updateDate=" + updateDate
+				+ ", updateTime=" + updateTime + "]";
 	}
 
 }

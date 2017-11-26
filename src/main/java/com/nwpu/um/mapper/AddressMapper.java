@@ -24,17 +24,17 @@ public interface AddressMapper {
 	
 	/**
 	 * 删除收货地址
-	 * @param info
+	 * @param uiid
 	 * @return
 	 */
-	public int delAddress(AddressInfo info);
+	public int delAddress(@Param("uiid") String uiid);
 	
 	/**
 	 * 查询收货地址
-	 * @param info
+	 * @param uiid
 	 * @return
 	 */
-	public AddressModel queryAddress(AddressInfo info);
+	public AddressModel queryAddress(@Param("uiid") String uiid);
 	
 	/**
 	 * 修改收货地址

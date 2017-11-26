@@ -35,7 +35,6 @@ public class DataSourceConfig implements EnvironmentAware{
         datasource.setMaxWaitMillis(Long.valueOf(propertyResolver.getProperty("dbcp2.max-wait-millis")));
         datasource.setMinIdle(Integer.valueOf(propertyResolver.getProperty("dbcp2.min-idle"))); 
         datasource.setInitialSize(Integer.valueOf(propertyResolver.getProperty("dbcp2.initial-size")));
-        datasource.setValidationQuery(propertyResolver.getProperty("dbcp2.validation-query"));
         datasource.setConnectionProperties(propertyResolver.getProperty("dbcp2.connection-properties"));
         return datasource;  
     } 

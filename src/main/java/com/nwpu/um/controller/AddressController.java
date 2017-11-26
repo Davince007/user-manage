@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nwpu.um.model.AddressModel;
@@ -36,15 +37,13 @@ public class AddressController {
 	 * @return
 	 */
 	@RequestMapping(value = "queryAddress", method = RequestMethod.GET)
-	public ResultBean<AddressModel> queryAddress(AddressInfo info) {
+	public ResultBean<AddressModel> queryAddress(@RequestParam("uiid")String uiid) {
 
-		String uiid = info.getUiid();
 		if (StringUtils.isBlank(uiid)) {
 			return new ResultBean<AddressModel>(ResultBean.FAILURE_CODE, "uiid不能为空");
 		}
 
-		AddressModel addressModel = addressService.queryAddress(info);
-		LOG.info("The addressBean is:{}", info);
+		AddressModel addressModel = addressService.queryAddress(uiid);
 		return new ResultBean<AddressModel>(ResultBean.SUCCESS_CODE, ResultBean.SUCCESS_DESC, addressModel);
 	}
 

@@ -20,17 +20,17 @@ public interface AddressService {
 	
 	/**
 	 * 删除收货地址
-	 * @param info
+	 * @param uiid
 	 * @return
 	 */
-	public int delAddress(AddressInfo info);
+	public int delAddress(String uiid);
 	
 	/**
 	 * 查询收货地址
-	 * @param info
+	 * @param uiid
 	 * @return
 	 */
-	public AddressModel queryAddress(AddressInfo info);
+	public AddressModel queryAddress(String uiid);
 	
 	/**
 	 * 修改收货地址

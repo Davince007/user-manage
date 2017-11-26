@@ -17,8 +17,12 @@
 		<result column="addr_detailAddr" property="detailAddr" jdbcType="VARCHAR" />
 		<result column="addr_email" property="email" jdbcType="VARCHAR" />
 		<result column="addr_isDefaultAddr" property="isDefaultAddr" jdbcType="VARCHAR" />
-		<result column="addr_createTime" property="createTime" jdbcType="TIMESTAMP" />
-		<result column="addr_updateTime" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="createUser" property="createUser" jdbcType="VARCHAR" />
+		<result column="createDate" property="createDate" jdbcType="VARCHAR" />
+		<result column="createTime" property="createTime" jdbcType="VARCHAR" />
+		<result column="updateUser" property="updateUser" jdbcType="VARCHAR" />
+		<result column="updateDate" property="updateDate" jdbcType="VARCHAR" />
+		<result column="updateTime" property="updateTime" jdbcType="VARCHAR" />
 	</resultMap>
 	
 	<sql id="column_field">
@@ -36,26 +40,22 @@
 		addr_detailAddr as 'detailAddr',
 		addr_email as 'email',
 		addr_isDefaultAddr as 'isDefaultAddr',
-		addr_createTime as 'createTime',
-		addr_updateTime as 'updateTime'
+		createUser as 'createUser',
+		createDate as 'createDate',
+		createTime as 'createTime',
+		updateUser as 'updateUser',
+		updateDate as 'updateDate',
+		updateTime as 'updateTime'
 	</sql>
 	
 	<select id="queryAddress" parameterType="java.lang.String"
 		resultType="com.nwpu.um.model.AddressModel">
-		select
+		select 
 		<include refid="column_field" />
 		from um_address
-		where 1 = 1
-		<if test="uiid != null">
-			and addr_uiid = #{uiid,jdbcType=VARCHAR}
-		</if>
-		<if test="idNumber != null">
-			and addr_idNumber = #{idNumber,jdbcType=VARCHAR}
-		</if>
-		<if test="idType != null">
-			and addr_idType = #{idType,jdbcType=VARCHAR}
-		</if>
-		order by addr_createTime desc
+		where 1 = 1 
+		and addr_uiid = #{uiid,jdbcType=VARCHAR}
+		order by addr_Id desc
 	</select>
 
 	<insert id="saveAddress" parameterType="com.nwpu.um.model.AddressModel"
